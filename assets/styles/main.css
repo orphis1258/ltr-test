@@ -2947,7 +2947,7 @@ fieldset[disabled] .form-control:hover {
   background: #ececec;
 }
 
-.navbar .navbar-nav .dropdown .cart-dropdown .cart-btns .btn-ghost-light:hover {
+.navbar .navbar-nav .dropdown .cart-dropdown .cart-,btns .btn-ghost-light:hover {
   color: #111;
   border-color: #ececec;
 }
@@ -2956,7 +2956,7 @@ fieldset[disabled] .form-control:hover {
   color: #111;
 }
 
-.navbar .navbar-nav .dropdown .cart-dropdown .cart-btns .btn-ghost-light:visited {
+.navbar .navbar-nav .dropdown .cart-dropdown .cart-.btns .btn-ghost-light:visited {
   color: #ececec;
 }
 
@@ -2987,7 +2987,7 @@ fieldset[disabled] .form-control:hover {
   border-color: #222;
 }
 
-.navbar-inverse .navbar-nav .dropdown .dropdown-menu li a:hover {
+.navbar-inverse .navbar-nav .dro.pdown .dropdown-menu li a:hover {
   background: rgba(255, 255, 255, 0.1);
   border-left: 3px solid #ececec;
 }
