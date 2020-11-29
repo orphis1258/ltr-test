@@ -1,0 +1,287 @@
+<!-- ========== Login From ========== -->
+
+<div class="login-1">
+  <div class="bg-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <!-- Log in -->
+          <div
+            class="panel-group"
+            id="login-accordion"
+            role="tablist"
+            aria-multiselectable="true"
+          >
+            <div class="panel top-panel panel-default">
+              <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                  <a
+                    role="button"
+                    data-toggle="collapse"
+                    data-parent="#login-accordion"
+                    href="#collapseOne"
+                    aria-expanded="true"
+                    aria-controls="collapseOne"
+                  >
+                    Login to your account
+                  </a>
+                </h4>
+              </div>
+              <div
+                id="collapseOne"
+                class="panel-collapse collapse in"
+                role="tabpanel"
+                aria-labelledby="headingOne"
+              >
+                <div class="panel-body">
+                  <div class="form-login">
+                    <form
+                      #loginForm="ngForm"
+                      (ngSubmit)="onLoginFormSubmit(loginForm)"
+                    >
+                      <!-- Username -->
+                      <div class="form-group">
+                        <input
+                          type="email"
+                          id="username-login-1"
+                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                          class="form-control"
+                          placeholder="Enter your email"
+                          name="email"
+                          ngModel
+                          #loginEmailModel="ngModel"
+                          required
+                        />
+                        <label for="username-login-1">Username</label>
+                        <div *ngIf="loginEmailModel.dirty" class="text-danger">
+                          <p *ngIf="loginEmailModel.invalid">
+                            Please Enter correct Email
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Password -->
+                      <div class="form-group">
+                        <input
+                          type="password"
+                          name="password"
+                          minlength="6"
+                          id="pass-login-1"
+                          class="form-control"
+                          placeholder="enter your password"
+                          ngModel
+                          #loginpasswordmodel="ngModel"
+                          required
+                        />
+                        <label for="pass-login-1">password</label>
+                        <span class="pull-right"
+                          ><a class="forget-pass-link"
+                            >forget password?</a
+                          ></span
+                        >
+                        <div *ngIf="loginpasswordmodel.dirty" class="text-danger">
+                          <p *ngIf="loginpasswordmodel.invalid">
+                            Please Enter correct Password
+                          </p>
+                        </div>
+                      </div>
+                      <!-- Submit -->
+                      <button
+                        [ngClass]="loginForm.valid ? 'btn' : 'btn btn-light'"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                    </form>
+                    <!-- json on the login page -->
+                    <pre>{{ loginForm.value | json }}</pre>
+                  </div>
+                  <!-- / .form-wrapper -->
+                </div>
+                <!-- / .panel-body -->
+              </div>
+              <!-- / .panel-collapse -->
+            </div>
+            <!-- / .panel -->
+
+            <!-- Register Account -->
+            <div class="panel bottom-panel panel-default">
+              <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                  <a
+                    class="collapsed"
+                    role="button"
+                    data-toggle="collapse"
+                    data-parent="#login-accordion"
+                    href="#register-login-page-2"
+                    aria-expanded="false"
+                    aria-controls="register-login-page-2"
+                  >
+                    Register account
+                  </a>
+                </h4>
+              </div>
+              <div
+                id="register-login-page-2"
+                class="panel-collapse collapse"
+                role="tabpanel"
+                aria-labelledby="headingTwo"
+              >
+                <div class="panel-body">
+                  <div class="form-register">
+                    <form
+                      #registerForm="ngForm"
+                      (ngSubmit)="onSubmitRegisterForm(registerForm)"
+                    >
+                      <!-- First Name -->
+                      <div class="form-group col-md-6 no-gap-left">
+                        <input
+                          type="text"
+                          maxlength="10"
+                          minlength="3"
+                          class="form-control"
+                          name="firstName"
+                          placeholder="First Name"
+                          [(ngModel)]="registerFormModel.firstName"
+                        />
+                        <label for="name-login-1">First Name</label>
+                      </div>
+                      <!-- Last name -->
+                      <div class="form-group col-md-6 no-gap-right">
+                        <input
+                          type="text"
+                          maxlength="10"
+                          minlength="3"
+                          id="lastname-signup-1"
+                          name="lastName"
+                          [(ngModel)]="registerFormModel.lastName"
+                          class="form-control"
+                          placeholder="Last Name"
+                        />
+                        <label for="last-name-signup-1">Last Name</label>
+                      </div>
+                      <!-- Email -->
+                      <div class="form-group">
+                        <input
+                          [type]="'email'"
+                          id="email-signup-1"
+                          class="form-control"
+                          required
+                          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                          name="email"
+                          [(ngModel)]="registerFormModel.email"
+                          #emailModel="ngModel"
+                          placeholder="Enter your email"
+                        />
+                        <label for="email-signup-1">Email</label>
+                        <div *ngIf="emailModel.touched">
+                          <p *ngIf="emailModel.errors" class="text-danger">
+                            Please Enter Valid Email
+                          </p>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <input
+                          type="number"
+                          id="phoneNumber"
+                          class="form-control"
+                          name="phoneNumber"
+                          [(ngModel)]="registerFormModel.phoneNumber"
+                          #phoneNumberModel="ngModel"
+                          placeholder="Enter your mobileNumber"
+                          pattern="^\d{10}$"
+                          required
+                        />
+                        <label for="phoneNumber">Phone Number</label>
+                        <p
+                          *ngIf="phoneNumberModel.errors?.pattern"
+                          class="text-danger"
+                        >
+                          Phone Number must be 10 digits
+                        </p>
+                        <p
+                          *ngIf="
+                            phoneNumberModel.dirty &&
+                            phoneNumberModel.errors?.required
+                          "
+                          class="text-danger"
+                        >
+                          Phone number is required
+                        </p>
+                      </div>
+                      <!-- Password -->
+                      <div class="form-group">
+                        <input
+                          type="password"
+                          id="pass-signup-1"
+                          class="form-control"
+                          name="password"
+                          [(ngModel)]="registerFormModel.password"
+                          #passwordmodel="ngModel"
+                          placeholder="Enter a password"
+                          minlength="6"
+                          required
+                        />
+                        <label for="pass-signup-1">Password</label>
+                        <div
+                          *ngIf="
+                            passwordmodel.errors &&
+                            (passwordmodel.dirty || passwordmodel.touched)
+                          "
+                        >
+                          <p class="text-danger">Password is required</p>
+                        </div>
+                      </div>
+
+                      <!-- Re-Enter Password -->
+                      <div class="form-group">
+                        <input
+                          type="password"
+                          minlength="6"
+                          id="re-pass-signup-1"
+                          class="form-control"
+                          ngValidateEqual="password"
+                          placeholder="Re-enter your password"
+                          name="passwordC"
+                          #modelConfirmPassword="ngModel"
+                          [(ngModel)]="registerFormModel.passwordC"
+                        />
+                        <label for="re-pass-signup-1">Re-enter password</label>
+                        <div
+                          *ngIf="
+                            (modelConfirmPassword.dirty ||
+                              modelConfirmPassword.touched) &&
+                            modelConfirmPassword.invalid
+                          "
+                        >
+                          <p class="text-danger">Passwords dont match</p>
+                        </div>
+                      </div>
+                      <!-- Submit -->
+                      <button
+                        [ngClass]="registerForm.valid ? 'btn' : 'btn btn-light'"
+                        type="submit"
+                      >
+                        Register
+                      </button>
+                    </form>
+                    <h3>{{ this.registrationResult }}</h3>
+                  </div>
+                  <!-- / .form-wrapper -->
+                </div>
+                <!-- / .panel-body -->
+              </div>
+              <!-- / #register-login-page-2 .panel-colapse -->
+            </div>
+            <!-- / .panel -->
+          </div>
+          <!-- / #login-accordion .panel-group -->
+        </div>
+        <!-- / .col-md-6 -->
+      </div>
+      <!-- / .row -->
+    </div>
+    <!-- / .container -->
+  </div>
+  <!-- / .bg-overlay -->
+</div>
+<!-- / .bg-login -->
